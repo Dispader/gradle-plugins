@@ -1,9 +1,11 @@
 // Assumes 'java', 'groovy' or 'scala' plugins have been applied before
+// OR that Ruby GemJars support has been added via JRuby configuration
+// TODO: abstract JRuby/Ruby/GemJars configuration to a plugin
 
 // Add integration test source sets
 sourceSets {
   integrationTest { sourceSet ->
-    ["java", "groovy", "scala", "resources"].each {
+    ["java", "groovy", "ruby", "scala", "resources"].each {
       if (!sourceSet.hasProperty(it)) return
       sourceSet."$it".srcDir file("src/integration-test/${it}")
     }
